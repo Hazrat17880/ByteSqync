@@ -52,11 +52,11 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#portfolio" },
-    { name: "About Us", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "About Us", href: "/about-us" },
+    { name: "Contact", href: "/contact-us" },
   ];
 
   // Smooth close mobile menu
@@ -81,7 +81,7 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <a 
-              href="#home" 
+              href="/" 
               className="flex items-center transition-transform duration-300 hover:scale-105"
             >
               <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
