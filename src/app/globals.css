@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* Hide scrollbar but keep scroll functionality */
+.sidebar-scroll {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE & Edge */
+}
+.sidebar-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+@font-face {
+  font-family: 'virtual';
+  src: url('/fonts/virtual.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'poppin';
+  src: url('/fonts/poppin.ttf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body{
+  font-family: 'poppin';
+  font-weight: 300;
+ 
+}
+
+.text-primary {
+  color: #1f4668;
+}
+.text-secondary{
+  color: #27AAE1;
+}
+
+.font-virtual{
+  font-family: 'virtual';
+}
+
+.bg-primary{
+  background-color: #1f4668;
+}
+.bg-secondary{
+  background-color: #27AAE1;
+
+}
+.border-color-primary{
+  border-color:#1f4668;
+}
+.border-color-secondary{
+  border-color:#27AAE1;
+}
+
+/* for scrolling  */
+
+/* Add these styles to your globals.css file */
+html {
+  scroll-behavior: smooth; /* Smooth for anchor links */
+}
+
+body {
+  overscroll-behavior: none; /* Prevents unwanted bounce */
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
