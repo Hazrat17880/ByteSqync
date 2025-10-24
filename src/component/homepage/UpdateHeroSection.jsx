@@ -234,7 +234,7 @@ const ITGenesisHero = () => {
         </div>
 
         {/* Progress Bar */}
-        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/20 z-10">
+        {/* <div className="absolute bottom-0 left-0 w-full h-0.5 bg-white/20 z-10">
           <motion.div
             className="h-full bg-white"
             initial={{ width: "0%" }}
@@ -247,11 +247,11 @@ const ITGenesisHero = () => {
               }
             }}
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Services Quick Overview */}
-      <div className="bg-white py-12 border-b">
+      {/* <div className="bg-white py-12 border-b">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -319,10 +319,10 @@ const ITGenesisHero = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Trust Indicators Section */}
-      <div className="bg-gray-50 py-12">
+      {/* <div className="bg-gray-50 py-12">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 text-center">
             <motion.div
@@ -401,7 +401,7 @@ const ITGenesisHero = () => {
             </motion.div>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

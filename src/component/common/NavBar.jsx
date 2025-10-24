@@ -68,7 +68,7 @@ export default function Navbar() {
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
-          ? "shadow-lg backdrop-blur-lg  "
+          ? "shadow-lg backdrop-blur-lg bg-white/95"
           : "bg-transparent text-white"
       } ${
         isVisible 
@@ -84,7 +84,7 @@ export default function Navbar() {
               href="/" 
               className="flex items-center transition-transform duration-300 hover:scale-105"
             >
-              <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-3xl font-bold bg-gradient-to-r from-[#27AAE1] to-[#1f4668] bg-clip-text text-transparent">
                 ByteSynq
               </span>
             </a>
@@ -97,11 +97,11 @@ export default function Navbar() {
                 key={item.name}
                 href={item.href}
                 className={`font-medium transition-all duration-300 relative group ${
-                  isScrolled ? "text-white" : "text-white"
-                } hover:text-blue-600 transform hover:-translate-y-0.5`}
+                  isScrolled ? "text-gray-700" : "text-white"
+                } hover:text-[#27AAE1] transform hover:-translate-y-0.5`}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full group-hover:shadow-sm"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#27AAE1] transition-all duration-300 group-hover:w-full group-hover:shadow-sm"></span>
               </a>
             ))}
           </div>
@@ -111,7 +111,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`focus:outline-none transition-all duration-300 transform hover:scale-110 ${
-                isScrolled ? "text-white" : "text-white"
+                isScrolled ? "text-gray-700" : "text-white"
               } ${isMobileMenuOpen ? "rotate-90" : "rotate-0"}`}
               aria-label="Toggle menu"
             >
@@ -138,7 +138,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2"
+                  className="block px-4 py-4 text-gray-700 hover:text-[#27AAE1] hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2"
                   onClick={handleMobileMenuClose}
                   style={{
                     transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",
