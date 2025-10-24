@@ -128,7 +128,7 @@ const ITGenesisHero = () => {
                       </motion.h1>
                       
                       <motion.p
-                        className="text-base md:text-lg leading-relaxed mb-8 opacity-90 max-w-2xl"
+                        className="text-sm md:text-base lg:text-lg leading-relaxed mb-8 opacity-90 max-w-2xl"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.6, delay: 0.6 }}

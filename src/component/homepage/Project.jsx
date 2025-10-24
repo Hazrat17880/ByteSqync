@@ -212,13 +212,13 @@ export default function PortfolioPreview() {
     : projects.filter(project => project.category === filter);
 
   return (
-    <section className="relative bg-white py-16 md:py-24">
+    <section className="relative bg-white py-12 md:py-16 lg:py-24">
       <div className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-4 md:mb-6">
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-5xl font-light text-gray-900 mb-4 tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -226,7 +226,7 @@ export default function PortfolioPreview() {
             Featured <span className="font-semibold text-[#1f4668]">Projects</span>
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-sm md:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -277,7 +277,7 @@ export default function PortfolioPreview() {
             <h3 className="text-2xl md:text-3xl font-semibold mb-4">
               Ready to Start Your Project?
             </h3>
-            <p className="text-blue-100 mb-8 text-lg max-w-2xl mx-auto">
+            <p className="text-blue-100 mb-8 text-sm md:text-base lg:text-lg max-w-2xl mx-auto">
               Let's collaborate to bring your vision to life with cutting-edge technology and innovative design.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

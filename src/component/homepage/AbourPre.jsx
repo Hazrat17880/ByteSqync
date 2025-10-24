@@ -12,7 +12,7 @@ const AboutCompany = () => {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="pt-12 md:pt-16 lg:pt-24  bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
@@ -29,7 +29,7 @@ const AboutCompany = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight"
+              className="text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight"
             >
               About Our Company
             </motion.h1>
@@ -39,7 +39,7 @@ const AboutCompany = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-3xl font-semibold text-[#019ee8] mb-8 leading-relaxed"
+              className="text-2xl md:text-3xl font-semibold text-[#019ee8] mb-4 md:mb-6 leading-relaxed"
             >
               Your partner for Digital Innovation
             </motion.h4>
@@ -51,15 +51,15 @@ const AboutCompany = () => {
               viewport={{ once: true }}
               className="space-y-6 text-gray-700 leading-relaxed"
             >
-              <p className="text-lg md:text-xl">
+              <p className="text-sm md:text-base lg:text-lg mb-4 md:mb-6">
                 ByteSynq is an information technology & digital marketing agency that provides 
                 highly innovative and flexible solutions to address the technological and digital 
                 needs of businesses. Our creative solutions can address all your business 
                 technological and digital needs.
               </p>
 
-              <div className="space-y-4">
-                <p className="text-lg md:text-xl">
+              <div className="mb-4 md:mb-6">
+                <p className="text-sm md:text-base lg:text-lg">
                   We Strive To Become A Leading Performer, In Providing Quality Web And Software 
                   Development Solutions. Our Professional, Flexible And Integrated Process Reflects 
                   In What We Do. We Always Guide Our Customers To Success.
@@ -73,7 +73,7 @@ const AboutCompany = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
-              className="mt-8 space-y-3"
+              className="mb-4 md:mb-6"
             >
               {features.map((feature, index) => (
                 <motion.div
@@ -96,7 +96,7 @@ const AboutCompany = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               viewport={{ once: true }}
-              className="flex flex-wrap gap-4 mt-10"
+              className="flex flex-wrap gap-4 mb-4 md:mb-6"
             >
               <a
                 href="/about-us"
@@ -179,14 +179,14 @@ const AboutCompany = () => {
                 </div>
               </motion.div> */}
 
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.1 }}
                 viewport={{ once: true }}
                 className="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100"
               >
-                {/* <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
                     <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z" />
@@ -196,8 +196,8 @@ const AboutCompany = () => {
                     <div className="text-2xl font-bold text-gray-900">16+</div>
                     <div className="text-sm text-gray-600">Team Experts</div>
                   </div>
-                </div> */}
-              </motion.div>
+                </div>
+              </motion.div> */}
             </div>
           </motion.div>
         </div>

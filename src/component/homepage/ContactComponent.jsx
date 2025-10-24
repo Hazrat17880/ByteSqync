@@ -79,7 +79,7 @@ export default function ContactComponent() {
   };
 
   return (
-    <section className='relative bg-gray-950 lg:h-screen h-full flex items-center py-10'>
+    <section className='relative bg-gray-950 lg:h-screen h-full flex items-center py-12 md:py-16 lg:py-24 mb-4 md:mb-6 lg:mb-8'>
     
       
       <div className="absolute inset-0 w-full h-full z-0">
@@ -99,7 +99,7 @@ export default function ContactComponent() {
           {/* Left Column - Content */}
           <div className="space-y-3 mt-2 md:pb-15 pb-5">
             <motion.h2
-              className="text-3xl md:text-5xl  text-white tracking-wider lowercase"
+              className="text-2xl md:text-3xl lg:text-5xl  text-white tracking-wider lowercase"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}

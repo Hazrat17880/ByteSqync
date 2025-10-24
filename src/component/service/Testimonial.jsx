@@ -119,7 +119,7 @@ const [feedbacks, setFeedbacks]= useState(false)
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-3xl md:text-5xl  text-primary font-virtual tracking-wider lowercase "
+            className="text-2xl md:text-3xl lg:text-5xl  text-primary font-virtual tracking-wider lowercase "
           >
             Voices of <span className="text-secondary">Impact</span>
           </motion.h2>

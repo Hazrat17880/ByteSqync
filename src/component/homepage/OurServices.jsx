@@ -63,12 +63,12 @@ const services = [
 
 export default function OurServices() {
   return (
-    <section className="relative bg-white py-16 md:py-24">
+    <section className="relative bg-white pt-12 md:pt-16 lg:pt-24">
       <div className="relative px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.h2
-            className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4 tracking-tight"
+            className="text-2xl md:text-3xl lg:text-5xl font-light text-gray-900 mb-4 tracking-tight"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -76,7 +76,7 @@ export default function OurServices() {
             Our <span className="font-semibold text-[#1f4668]">Services</span>
           </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-4 md:mb-6 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -130,7 +130,7 @@ export default function OurServices() {
                     {service.title}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                  <p className="text-gray-600 leading-relaxed mb-6 text-sm md:text-base lg:text-lg">
                     {service.description}
                   </p>
 

@@ -47,14 +47,11 @@ export default function Home() {
       <TestimonialsTrust/>
       <PortfolioPreview/>
 
-      {/* Other Sections */}
-      {/* <ImageComponent /> */}
-      {/* <OurTeamExpertise /> */}
-      {/* <AboutPixi /> */}
+     
+   
       <ContactComponent />
       <OurTeam />
-      {/* <TestimonialsTrust /> */}
-      {/* <ExploreOurBranch /> */}
+     
     </main>
   );
 }
