@@ -84,7 +84,7 @@ export default function Navbar() {
               href="/" 
               className="flex items-center transition-transform duration-300 hover:scale-105"
             >
-              <span className="text-3xl font-bold bg-gradient-to-r from-[#27AAE1] to-[#1f4668] bg-clip-text text-transparent">
+              <span className="text-3xl font-bold bg-gradient-to-r from-[#27AAE1] to-[#1f4668] bg-clip-text text-blue-600">
                 ByteSynq
               </span>
             </a>
