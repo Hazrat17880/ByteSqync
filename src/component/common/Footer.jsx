@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
+import {
   Mail,
   MapPin,
   Phone,
@@ -47,18 +47,20 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-to-b from-gray-900 to-[#1f4668] text-white relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-gray-900 to-[#1F4668] text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+            backgroundSize: '40px 40px',
+          }}
+        />
       </div>
 
       {/* Main Footer Content */}
       <div className="relative z-10">
-        {/* 5 Columns Layout */}
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
             
@@ -71,7 +73,7 @@ const Footer = () => {
               className="lg:col-span-2"
             >
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-[#27AAE1] to-[#1f4668] rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3">
                   BS
                 </div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -79,7 +81,7 @@ const Footer = () => {
                 </h3>
               </div>
               <p className="text-gray-300 leading-relaxed mb-6 text-lg">
-                Transforming ideas into innovative digital solutions. We deliver cutting-edge 
+                Transforming ideas into innovative digital solutions. We deliver cutting-edge
                 software development and consulting services to drive your business forward.
               </p>
               <div className="flex space-x-4">
@@ -92,7 +94,7 @@ const Footer = () => {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-[#27AAE1] transition-all duration-300 backdrop-blur-sm"
+                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-secondary transition-all duration-300 backdrop-blur-sm"
                     aria-label={social.label}
                   >
                     <social.icon className="w-4 h-4" />
@@ -122,7 +124,7 @@ const Footer = () => {
                       href={link.href}
                       className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
                     >
-                      <span className="w-1 h-1 bg-[#27AAE1] rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="w-1 h-1 bg-secondary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {link.name}
                     </a>
                   </motion.li>
@@ -151,7 +153,7 @@ const Footer = () => {
                       href={service.href}
                       className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
                     >
-                      <span className="w-1 h-1 bg-[#27AAE1] rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="w-1 h-1 bg-secondary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       {service.name}
                     </a>
                   </motion.li>
@@ -175,10 +177,10 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <Mail className="w-5 h-5 text-[#27AAE1] mt-0.5 flex-shrink-0" />
+                  <Mail className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm">Email</p>
-                    <a href="mailto:info@bytesynq.com" className="text-white hover:text-[#27AAE1] transition-colors duration-300">
+                    <a href="mailto:info@bytesynq.com" className="text-white hover:text-secondary transition-colors duration-300">
                       info@bytesynq.com
                     </a>
                   </div>
@@ -191,10 +193,10 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <Phone className="w-5 h-5 text-[#27AAE1] mt-0.5 flex-shrink-0" />
+                  <Phone className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm">Phone</p>
-                    <a href="tel:+93705155015" className="text-white hover:text-[#27AAE1] transition-colors duration-300">
+                    <a href="tel:+93705155015" className="text-white hover:text-secondary transition-colors duration-300">
                       +93 705 155 015
                     </a>
                   </div>
@@ -207,7 +209,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <MapPin className="w-5 h-5 text-[#27AAE1] mt-0.5 flex-shrink-0" />
+                  <MapPin className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm">Location</p>
                     <p className="text-white text-sm">Islamabad & San Francisco</p>
@@ -222,7 +224,6 @@ const Footer = () => {
         <div className="border-t border-white/10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              {/* Copyright */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -233,7 +234,6 @@ const Footer = () => {
                 © {currentYear} ByteSynq Solution. All rights reserved.
               </motion.div>
 
-              {/* Additional Links */}
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -263,7 +263,7 @@ const Footer = () => {
         transition={{ duration: 0.4, delay: 0.6 }}
         viewport={{ once: true }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-[#27AAE1] to-[#1f4668] rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 group"
+        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 group"
         aria-label="Scroll to top"
         whileHover={{ scale: 1.1, y: -2 }}
       >

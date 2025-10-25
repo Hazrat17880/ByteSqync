@@ -10,6 +10,10 @@ export default function Navbar() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Define your two colors
+  const primaryColor = "#0A66C2"; // Primary color
+  const secondaryColor = "#00BFA6"; // Secondary color
+
   useEffect(() => {
     // Check if mobile on mount and resize
     const checkMobile = () => {
@@ -69,7 +73,7 @@ export default function Navbar() {
       className={`fixed w-full top-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
           ? "shadow-lg backdrop-blur-lg bg-white/95"
-          : "bg-transparent text-white"
+          : "bg-white shadow-sm"
       } ${
         isVisible 
           ? "translate-y-0 opacity-100" 
@@ -82,10 +86,16 @@ export default function Navbar() {
           <div className="flex-shrink-0">
             <a 
               href="/" 
-              className="flex items-center transition-transform duration-300 hover:scale-105"
+              className="flex flex-col items-center transition-transform duration-300 hover:scale-105"
             >
-              <span className="text-3xl font-bold bg-gradient-to-r from-[#27AAE1] to-[#1f4668] bg-clip-text text-blue-600">
+              <span 
+                className="text-3xl font-bold"
+                style={{ color: primaryColor }}
+              >
                 ByteSynq
+              </span>
+              <span className="text-xs mt-1 font-medium" style={{ color: secondaryColor }}>
+                Software Solutions
               </span>
             </a>
           </div>
@@ -96,12 +106,13 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className={`font-medium transition-all duration-300 relative group ${
-                  isScrolled ? "text-gray-700" : "text-white"
-                } hover:text-[#27AAE1] transform hover:-translate-y-0.5`}
+                className="font-medium transition-all duration-300 relative group hover:scale-105 text-[#2D46B9] hover:text-[#00C6FF]"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#27AAE1] transition-all duration-300 group-hover:w-full group-hover:shadow-sm"></span>
+                <span 
+                  className="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full group-hover:shadow-sm"
+                  style={{ backgroundColor: primaryColor }}
+                ></span>
               </a>
             ))}
           </div>
@@ -111,9 +122,10 @@ export default function Navbar() {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`focus:outline-none transition-all duration-300 transform hover:scale-110 ${
-                isScrolled ? "text-gray-700" : "text-white"
-              } ${isMobileMenuOpen ? "rotate-90" : "rotate-0"}`}
+                isMobileMenuOpen ? "rotate-90" : "rotate-0"
+              }`}
               aria-label="Toggle menu"
+              style={{ color: primaryColor }}
             >
               {isMobileMenuOpen ? (
                 <X size={28} className="transition-transform duration-300" />
@@ -124,7 +136,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu - CLEAR without blur */}
+        {/* Mobile Menu */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen
@@ -132,13 +144,16 @@ export default function Navbar() {
               : "max-h-0 opacity-0 -translate-y-4"
           }`}
         >
-          <div className="bg-white border-t border-gray-100 rounded-b-xl shadow-lg">
+          <div 
+            className="border-t rounded-b-xl shadow-lg bg-white"
+            style={{ borderColor: "#E5E7EB" }}
+          >
             <div className="px-2 pt-2 pb-4 space-y-1">
               {navItems.map((item, index) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-4 text-gray-700 hover:text-[#27AAE1] hover:bg-blue-50 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2"
+                  className="block px-4 py-4 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
                   onClick={handleMobileMenuClose}
                   style={{
                     transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",
@@ -152,7 +167,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Backdrop for Mobile Menu - Reduced blur */}
+      {/* Backdrop for Mobile Menu */}
       {isMobileMenuOpen && (
         <div
           className="fixed inset-0 bg-black/10 z-40 md:hidden transition-opacity duration-300"
