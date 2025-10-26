@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect, useRef } from 'react';
 import { MapPin, Phone, Clock, Globe, ExternalLink, Maximize2, Navigation, Plus, Minus } from 'lucide-react';
-import HoverableText from '../common/HoverText';
+import { motion } from 'framer-motion';
 
 export default function PremiumLocationCards() {
   const [activeLocation, setActiveLocation] = useState(0);
@@ -9,7 +9,9 @@ export default function PremiumLocationCards() {
   const [mapZoom, setMapZoom] = useState(15);
   const mapRef = useRef(null);
 
-
+  // Color constants - Using only primary and secondary
+  const primaryColor = '#0A66C2'; // Professional Blue
+  const secondaryColor = '#00BFA6'; // Professional Teal
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -29,7 +31,7 @@ export default function PremiumLocationCards() {
       id: 1,
       city: 'Kabul',
       country: 'Afghanistan',
-      address: 'Cinema Zainab Road, Shahr – Naw',
+      address: 'Cinema Zainab Road, Shahr – Naw, Kabul',
       coordinates: { lat: 34.5167, lng: 69.1833 },
       phone: '+93 78 168 0769',
       hours: 'Sun - Thu: 8:00 AM - 6:00 PM, Fri: 9:00 AM - 1:00 PM',
@@ -41,13 +43,13 @@ export default function PremiumLocationCards() {
       id: 2,
       city: 'Islamabad',
       country: 'Pakistan',
-      address: 'Elanza Mall D-Block , Gulderberg Desidinca Islamabad',
-      coordinates: { lat: 32.7950, lng: -116.9625 },
-      phone: '+92 315 944 92 46',
-      hours: 'Mon - Fri: 9:00 AM - 5:00 PM, Sat: 10:00 AM - 2:00 PM',
-      timezone: 'Pacific Time (GMT-8)',
-      googleMapsLink: 'https://goo.gl/maps/example-california',
-      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53743.73822375402!2d-116.99972210136718!3d32.79580299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d957608ab2ac6d%3A0x40712ac497ffb4e8!2sEl%20Cajon%2C%20CA%2C%20USA!5e0!3m2!1sen!2s!4v1740322320425!5m2!1sen!2s'
+      address: 'ByteSynq Office, F-7 Markaz, Islamabad',
+      coordinates: { lat: 33.6844, lng: 73.0479 },
+      phone: '+92 51 123 4567',
+      hours: 'Mon - Fri: 9:00 AM - 6:00 PM, Sat: 10:00 AM - 2:00 PM',
+      timezone: 'Pakistan Standard Time (GMT+5)',
+      googleMapsLink: 'https://goo.gl/maps/F7MarkazIslamabad',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3320.692345432109!2d73.0479!3d33.6844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbfd6c949b5a5%3A0x8b5b7b7b7b7b7b7b!2sF-7%20Markaz%2C%20Islamabad%2C%20Islamabad%20Capital%20Territory%2C%20Pakistan!5e0!3m2!1sen!2s!4v1740322320425!5m2!1sen!2s'
     }
   ];
 
@@ -68,7 +70,6 @@ export default function PremiumLocationCards() {
   };
 
   const updateMapZoomParam = (url, zoom) => {
-    // Simple function to update zoom parameter in Google Maps URL
     if (url.includes('!1m')) {
       return url.replace(/!1m\d+!2m\d+!3m\d+/, `!1m${zoom}!2m${zoom}!3m${zoom}`);
     }
@@ -76,38 +77,74 @@ export default function PremiumLocationCards() {
   };
 
   return (
-    <div className="py-16 px-4 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden mb-10">
+    <div className="py-16 px-4 bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-100 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-100 rounded-full translate-x-1/3 translate-y-1/3 opacity-50"></div>
+      <div 
+        className="absolute top-0 left-0 w-72 h-72 rounded-full -translate-x-1/2 -translate-y-1/2 opacity-50"
+        style={{ backgroundColor: `${primaryColor}20` }}
+      />
+      <div 
+        className="absolute bottom-0 right-0 w-96 h-96 rounded-full translate-x-1/3 translate-y-1/3 opacity-50"
+        style={{ backgroundColor: `${secondaryColor}20` }}
+      />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-           <HoverableText text={' Our'} color='text-[#1f4668]'/> <span className="text-[#27AAE1]"><HoverableText text={'Global'} color='text-[#27AAE1]'/></span> <HoverableText text={'Presence'} color='text-[#1f4668]'/>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-3 bg-white rounded-2xl px-6 py-3 mb-6 border border-gray-200 shadow-sm">
+            <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: secondaryColor }} />
+            <span 
+              className="text-sm font-semibold tracking-widest uppercase"
+              style={{ color: primaryColor }}
+            >
+              Our Locations
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span style={{ color: primaryColor }}>ByteSynq</span>{' '}
+            <span style={{ color: secondaryColor }}>Global Presence</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             With offices in multiple countries, we bring a unique blend of global expertise and local market insights.
           </p>
-        </div>
+        </motion.div>
         
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Location Cards - Always visible */}
           <div className="lg:w-2/5 flex flex-col gap-6">
             {locations.map((location, index) => (
-              <div 
+              <motion.div 
                 key={location.id} 
-                className={`bg-white rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:shadow-2xl cursor-pointer border ${activeLocation === index ? 'border-[#27AAE1]' : 'border-gray-200'}`}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`bg-white rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:shadow-2xl cursor-pointer border-2 ${
+                  activeLocation === index ? 'shadow-lg' : 'border-gray-200'
+                }`}
+                style={{ 
+                  borderColor: activeLocation === index ? primaryColor : 'transparent'
+                }}
                 onClick={() => setActiveLocation(index)}
               >
                 {/* Header with city and country */}
                 <div className="p-6 pb-4">
                   <div className="flex justify-between items-start">
                     <div>
-                      <h3 className="text-2xl font-bold text-[#1f4668]">{location.city}</h3>
+                      <h3 className="text-2xl font-bold" style={{ color: primaryColor }}>{location.city}</h3>
                       <p className="text-gray-600">{location.country}</p>
                     </div>
-                    <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div 
+                      className="px-3 py-1 rounded-full text-sm font-medium text-white"
+                      style={{ backgroundColor: primaryColor }}
+                    >
                       Office {index + 1}
                     </div>
                   </div>
@@ -116,7 +153,10 @@ export default function PremiumLocationCards() {
                 {/* Content Section */}
                 <div className="p-6 pt-0">
                   <div className="flex items-start mb-4">
-                    <div className="bg-[#1f4668] p-2 rounded-lg mr-4 flex-shrink-0">
+                    <div 
+                      className="p-2 rounded-lg mr-4 flex-shrink-0"
+                      style={{ backgroundColor: primaryColor }}
+                    >
                       <MapPin className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -126,7 +166,10 @@ export default function PremiumLocationCards() {
                   </div>
                   
                   <div className="flex items-start mb-4">
-                    <div className="bg-[#1f4668] p-2 rounded-lg mr-4 flex-shrink-0">
+                    <div 
+                      className="p-2 rounded-lg mr-4 flex-shrink-0"
+                      style={{ backgroundColor: primaryColor }}
+                    >
                       <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -136,7 +179,10 @@ export default function PremiumLocationCards() {
                   </div>
                   
                   <div className="flex items-start">
-                    <div className="bg-[#1f4668] p-2 rounded-lg mr-4 flex-shrink-0">
+                    <div 
+                      className="p-2 rounded-lg mr-4 flex-shrink-0"
+                      style={{ backgroundColor: primaryColor }}
+                    >
                       <Clock className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -153,7 +199,8 @@ export default function PremiumLocationCards() {
                         e.stopPropagation();
                         openGoogleMaps(location.googleMapsLink);
                       }}
-                      className="mt-6 w-full bg-[#1f4668] text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-all hover:bg-[#15324c] hover:shadow-md"
+                      className="mt-6 w-full py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-all hover:shadow-md text-white"
+                      style={{ backgroundColor: primaryColor }}
                     >
                       Open in Maps
                       <ExternalLink className="h-4 w-4 ml-2" />
@@ -167,28 +214,35 @@ export default function PremiumLocationCards() {
                         e.stopPropagation();
                         showDirections(index);
                       }}
-                      className="mt-6 w-full bg-[#1f4668] text-white py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-all hover:bg-[#15324c] hover:shadow-md"
+                      className="mt-6 w-full py-3 px-4 rounded-lg font-medium flex items-center justify-center transition-all hover:shadow-md text-white"
+                      style={{ backgroundColor: primaryColor }}
                     >
                       <Navigation className="h-4 w-4 mr-2" />
                       Show on Map
                     </button>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
           {/* Map Section - Visible on large screens */}
           {!isMobile && (
             <div className="lg:w-3/5">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-xl h-full border border-gray-200">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="bg-white rounded-2xl overflow-hidden shadow-xl h-full border border-gray-200"
+              >
                 <div className="relative h-full min-h-[600px]">
                   {/* Map header with location info */}
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex justify-between items-start">
                       <div>
-                        <h3 className="text-2xl font-bold text-[#1f4668] flex items-center">
-                          <MapPin className="h-6 w-6 text-[#27AAE1] mr-2" />
+                        <h3 className="text-2xl font-bold flex items-center" style={{ color: primaryColor }}>
+                          <MapPin className="h-6 w-6 mr-2" style={{ color: secondaryColor }} />
                           {locations[activeLocation].city} Office
                         </h3>
                         <p className="text-gray-600 mt-1">{locations[activeLocation].address}</p>
@@ -245,18 +299,47 @@ export default function PremiumLocationCards() {
                     {/* Location indicator */}
                     <div className="absolute top-4 left-4 bg-white rounded-lg shadow-lg p-3">
                       <div className="flex items-center">
-                        <div className="w-3 h-3 rounded-full bg-[#27AAE1] mr-2 animate-pulse"></div>
-                        <span className="text-sm font-medium">Current Location</span>
+                        <div 
+                          className="w-3 h-3 rounded-full mr-2 animate-pulse"
+                          style={{ backgroundColor: secondaryColor }}
+                        ></div>
+                        <span className="text-sm font-medium">ByteSynq Office</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             </div>
-          ) }
+          )}
         </div>
         
-      
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="text-center mt-16"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+            {[
+              { number: "2", label: "Countries" },
+              { number: "24/7", label: "Support" },
+              { number: "98%", label: "Satisfaction" },
+              { number: "50+", label: "Projects" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div 
+                  className="text-3xl font-bold mb-2"
+                  style={{ color: primaryColor }}
+                >
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 font-medium">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 
 const projects = [
   {
@@ -8,307 +9,364 @@ const projects = [
     title: "E-Commerce Platform",
     category: "Web Development",
     description:
-      "A full-stack e-commerce solution with real-time inventory management and seamless payment integration.",
+      "A full-stack e-commerce solution with real-time inventory management, payment integration, and admin dashboard. Built with modern technologies for scalability and performance.",
     image: "/portfolio/ecommerce-platform.jpg",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
+    technologies: ["React", "Node.js", "MongoDB", "Stripe", "AWS"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: true,
+    color: "from-[#0A66C2] to-[#00BFA6]",
+    icon: "🛒"
   },
   {
     id: 2,
     title: "Health & Fitness App",
     category: "Mobile Development",
     description:
-      "Cross-platform fitness tracking application with AI-powered workout recommendations and progress analytics.",
+      "Cross-platform fitness tracking application with AI-powered workout recommendations, progress analytics, and social features. Supports both iOS and Android platforms.",
     image: "/portfolio/fitness-app.jpg",
     technologies: ["Flutter", "Firebase", "TensorFlow", "Google Fit API"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: true,
+    color: "from-[#0A66C2] to-[#00BFA6]",
+    icon: "💪"
   },
   {
     id: 3,
     title: "Corporate Dashboard",
     category: "UI/UX Design",
     description:
-      "Enterprise analytics dashboard with customizable widgets and real-time data visualization.",
+      "Enterprise analytics dashboard with customizable widgets, real-time data visualization, and comprehensive reporting features for business intelligence.",
     image: "/portfolio/dashboard-ui.jpg",
-    technologies: ["Figma", "React", "D3.js", "WebSocket"],
+    technologies: ["Figma", "React", "D3.js", "WebSocket", "Chart.js"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: true,
+    color: "from-[#0A66C2] to-[#00BFA6]",
+    icon: "📊"
   },
   {
     id: 4,
     title: "Banking System",
     category: "Full Stack Development",
     description:
-      "Secure banking application with multi-layer authentication and real-time transaction processing.",
+      "Secure banking application with multi-layer authentication, real-time transaction processing, and advanced security features for financial institutions.",
     image: "/portfolio/banking-system.jpg",
-    technologies: ["Angular", "Spring Boot", "PostgreSQL", "Redis"],
+    technologies: ["Angular", "Spring Boot", "PostgreSQL", "Redis", "OAuth2"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
     featured: true,
+    color: "from-[#0A66C2] to-[#00BFA6]",
+    icon: "🏦"
   },
 ];
 
-const ProjectCard = ({ project, index }) => {
+const ProjectCard = ({ project, isActive, position }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const getTransform = () => {
+    if (position === 0) return { x: 0, scale: 1, opacity: 1, zIndex: 30 };
+    if (position === 1) return { x: 100, scale: 0.85, opacity: 0.6, zIndex: 20 };
+    if (position === -1) return { x: -100, scale: 0.85, opacity: 0.6, zIndex: 20 };
+    return { x: 0, scale: 0.7, opacity: 0, zIndex: 10 };
+  };
+
+  const transform = getTransform();
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-50px" }}
-      whileHover={{ y: -8 }}
-      className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
-      onMouseEnter={() => setIsHovered(true)}
+      layout
+      initial={{ opacity: 0 }}
+      animate={{
+        x: transform.x,
+        scale: transform.scale,
+        opacity: transform.opacity,
+        zIndex: transform.zIndex,
+      }}
+      transition={{ 
+        duration: 0.6,
+        ease: [0.32, 0.72, 0, 1]
+      }}
+      className="absolute"
+      onMouseEnter={() => isActive && setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      style={{
+        pointerEvents: isActive ? 'auto' : 'none'
+      }}
     >
-      {/* Project Image / Placeholder */}
-      <div className="relative h-80 overflow-hidden bg-gradient-to-br from-[#1f4668] to-[#27AAE1]">
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-8">
-          <div className="text-4xl mb-4">🚀</div>
-          <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-          <p className="text-blue-100 text-sm">{project.category}</p>
+      <div
+        className={`relative bg-white rounded-2xl overflow-hidden shadow-2xl transition-all duration-500 ${
+          isActive ? 'cursor-pointer' : ''
+        }`}
+        style={{
+          width: '420px',
+          height: '520px',
+        }}
+      >
+        {/* Project Background with Primary/Secondary Gradient */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${project.color}`}>
+          <div className="absolute inset-0 bg-black/10" />
+          
+          {/* Decorative Elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-32 translate-x-32" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/10 rounded-full blur-3xl translate-y-32 -translate-x-32" />
+          
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-8">
+            <motion.div 
+              className="text-7xl mb-6"
+              animate={{ 
+                scale: isHovered ? 1.1 : 1,
+                rotate: isHovered ? 5 : 0
+              }}
+              transition={{ duration: 0.3 }}
+            >
+              {project.icon}
+            </motion.div>
+            <h3 className="text-3xl font-bold mb-3 drop-shadow-lg">{project.title}</h3>
+            <p className="text-white/90 text-base font-medium">{project.category}</p>
+          </div>
         </div>
 
-        {/* Hover Overlay */}
-        <motion.div
-          animate={{
-            opacity: isHovered ? 1 : 0,
-            scale: isHovered ? 1 : 0.95,
-          }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end"
-        >
-          <div className="p-6 text-white">
-            <motion.h3
-              animate={{
-                y: isHovered ? 0 : 20,
-                opacity: isHovered ? 1 : 0,
-              }}
-              transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-xl font-bold mb-2"
-            >
-              {project.title}
-            </motion.h3>
-
-            <motion.p
-              animate={{
-                y: isHovered ? 0 : 20,
-                opacity: isHovered ? 1 : 0,
-              }}
-              transition={{ duration: 0.4, delay: 0.2 }}
-              className="text-blue-100 text-sm mb-4"
-            >
-              {project.description}
-            </motion.p>
-
+        {/* Hover Overlay - Full Content */}
+        <AnimatePresence>
+          {isHovered && isActive && (
             <motion.div
-              animate={{
-                y: isHovered ? 0 : 20,
-                opacity: isHovered ? 1 : 0,
-              }}
-              transition={{ duration: 0.4, delay: 0.3 }}
-              className="flex flex-wrap gap-2 mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-black/95 backdrop-blur-sm flex flex-col justify-between p-8"
             >
-              {project.technologies.map((tech, techIndex) => (
-                <span
-                  key={techIndex}
-                  className="px-3 py-1 bg-white/20 rounded-full text-xs border border-white/30"
+              {/* Top Section */}
+              <div className="flex-1 overflow-y-auto">
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.1 }}
+                  className="text-white"
                 >
-                  {tech}
-                </span>
-              ))}
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-4xl">{project.icon}</span>
+                    <div>
+                      <h3 className="text-2xl font-bold">{project.title}</h3>
+                      <p className="text-sm text-white/70">{project.category}</p>
+                    </div>
+                  </div>
+                  <p className="text-white/90 leading-relaxed">
+                    {project.description}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Bottom Section */}
+              <div className="space-y-4 pt-4 border-t border-white/10">
+                {/* Technologies */}
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.2 }}
+                >
+                  <p className="text-white/60 text-xs uppercase tracking-wider mb-2">Technologies</p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-3 py-1.5 bg-white/10 rounded-lg text-sm text-white border border-white/20 backdrop-blur-sm hover:bg-white/20 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Action Button */}
+                <motion.div
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                >
+                  <motion.a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full bg-white text-gray-900 text-center py-3.5 px-6 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <span>View Live Project</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </motion.a>
+                </motion.div>
+              </div>
             </motion.div>
+          )}
+        </AnimatePresence>
 
-            <motion.div
-              animate={{
-                y: isHovered ? 0 : 20,
-                opacity: isHovered ? 1 : 0,
-              }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-              className="flex gap-3"
-            >
-              <motion.a
-                href={project.liveUrl}
-                whileHover={{ scale: 1.05 }}
-                className="flex-1 bg-white text-[#1f4668] text-center py-2 px-4 rounded-lg font-semibold text-sm hover:bg-[#f3f4f6] transition-all"
-              >
-                Live Demo
-              </motion.a>
-              <motion.a
-                href={project.githubUrl}
-                whileHover={{ scale: 1.05 }}
-                className="flex-1 border border-white text-white text-center py-2 px-4 rounded-lg font-semibold text-sm hover:bg-white hover:text-[#1f4668] transition-all"
-              >
-                Code
-              </motion.a>
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Category Badge */}
-        <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-white/90 rounded-full text-xs font-semibold text-[#1f4668]">
-            {project.category}
-          </span>
-        </div>
-
-        {/* Featured Badge */}
-        {project.featured && (
-          <div className="absolute top-4 right-4">
-            <span className="px-3 py-1 bg-[#27AAE1] text-white rounded-full text-xs font-semibold">
-              Featured
-            </span>
-          </div>
-        )}
-      </div>
-
-      {/* Bottom Content */}
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-[#1f4668] mb-2 group-hover:text-[#27AAE1] transition-colors duration-300">
-          {project.title}
-        </h3>
-        <p className="text-gray-600 text-sm mb-4">{project.description}</p>
-        <div className="flex items-center justify-between">
-          <div className="flex gap-2">
-            {project.technologies.slice(0, 2).map((tech, i) => (
-              <span
-                key={i}
-                className="px-2 py-1 bg-[#f3f4f6] text-[#1f4668] rounded text-xs"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.technologies.length > 2 && (
-              <span className="px-2 py-1 bg-[#f3f4f6] text-[#1f4668] rounded text-xs">
-                +{project.technologies.length - 2}
-              </span>
-            )}
-          </div>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            className="w-8 h-8 bg-[#27AAE1] rounded-full flex items-center justify-center text-white cursor-pointer"
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </motion.div>
-        </div>
+        {/* Badges */}
+       
       </div>
     </motion.div>
   );
 };
 
 export default function PortfolioPreview() {
-  const [filter, setFilter] = useState("all");
-  const categories = [
-    "all",
-    "Web Development",
-    "Mobile Development",
-    "UI/UX Design",
-    "Full Stack Development",
-  ];
-  const filteredProjects =
-    filter === "all"
-      ? projects
-      : projects.filter((p) => p.category === filter);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 4000);
+    
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  }, []);
+
+  const goToSlide = useCallback((index) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  }, [currentIndex]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [nextSlide, prevSlide]);
+
+  const getPosition = (index) => {
+    const diff = index - currentIndex;
+    if (diff === 0) return 0;
+    if (diff === 1 || diff === -(projects.length - 1)) return 1;
+    if (diff === -1 || diff === projects.length - 1) return -1;
+    return 2;
+  };
 
   return (
-    <section className="relative bg-white py-16 md:py-20 lg:py-24">
-      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section 
+      className="relative bg-gradient-to-b from-gray-50 to-white py-16 md:py-20 lg:py-24 overflow-hidden"
+    >
+      {/* Background Decorations */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#0A66C2]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00BFA6]/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-light text-[#1f4668] mb-4"
+        <div className="text-center mb-16">
+          <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
+            className="inline-block mb-4"
+          >
+            <span className="px-4 py-2 bg-[#0A66C2]/10 text-[#0A66C2] rounded-full text-sm font-semibold">
+              Portfolio Showcase
+            </span>
+          </motion.div>
+          
+          <motion.h2
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
           >
             Featured{" "}
-            <span className="font-semibold text-[#27AAE1]">Projects</span>
+            <span className="bg-gradient-to-r from-[#0A66C2] to-[#00BFA6] bg-clip-text text-transparent">
+              Projects
+            </span>
           </motion.h2>
+          
           <motion.p
-            className="text-gray-600 max-w-3xl mx-auto leading-relaxed"
+            className="text-gray-600 max-w-2xl mx-auto leading-relaxed text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Explore our portfolio of innovative digital products that empower
-            businesses to scale and succeed.
+            Explore our portfolio of innovative solutions. Hover over the active project to discover detailed information and technologies used.
           </motion.p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setFilter(category)}
-              className={`px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
-                filter === category
-                  ? "bg-[#1f4668] text-white shadow-lg"
-                  : "bg-gray-100 text-[#1f4668] hover:bg-[#27AAE1] hover:text-white"
-              }`}
-            >
-              {category === "all" ? "All Projects" : category}
-            </button>
-          ))}
+        {/* Slider Container */}
+        <div className="relative h-[600px] flex items-center justify-center mb-8">
+          {/* Navigation Arrows */}
+          <motion.button
+            onClick={prevSlide}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-4 z-40 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 border-2 border-gray-100"
+            aria-label="Previous project"
+          >
+            <ChevronLeft className="w-7 h-7 text-gray-800" />
+          </motion.button>
+
+          <motion.button
+            onClick={nextSlide}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-4 z-40 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:bg-gray-50 transition-all duration-300 border-2 border-gray-100"
+            aria-label="Next project"
+          >
+            <ChevronRight className="w-7 h-7 text-gray-800" />
+          </motion.button>
+
+          {/* Projects Slider */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            {projects.map((project, index) => (
+              <ProjectCard
+                key={project.id}
+                project={project}
+                isActive={index === currentIndex}
+                position={getPosition(index)}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Project Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
+        {/* Navigation Dots */}
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex items-center gap-3">
+            {projects.map((project, index) => (
+              <button
+                key={project.id}
+                onClick={() => goToSlide(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === currentIndex
+                    ? 'bg-[#0A66C2] w-10 h-3'
+                    : 'bg-gray-300 hover:bg-gray-400 w-3 h-3'
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Project Counter */}
+         
         </div>
 
-        {/* CTA Section */}
-        {/* <motion.div
+        {/* View More CTA */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mt-20"
+          className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-[#1f4668] to-[#27AAE1] rounded-2xl p-10 md:p-14 text-white">
-            <h3 className="text-3xl font-semibold mb-4">
-              Ready to Start Your Project?
-            </h3>
-            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
-              Let's collaborate to bring your vision to life with
-              cutting-edge technology and creative excellence.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="px-8 py-4 bg-white text-[#1f4668] font-semibold rounded-lg hover:bg-[#f3f4f6] transition-all duration-300"
-              >
-                Start a Project
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-[#1f4668] transition-all duration-300"
-              >
-                View Full Portfolio
-              </motion.button>
-            </div>
-          </div>
-        </motion.div> */}
+          
+        </motion.div>
       </div>
     </section>
   );

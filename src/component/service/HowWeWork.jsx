@@ -45,7 +45,7 @@ const HowWeWork = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-slate-50 relative overflow-hidden">
+    <section className="py-16 px-4 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div 

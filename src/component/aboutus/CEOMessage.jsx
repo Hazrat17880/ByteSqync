@@ -56,10 +56,10 @@ const FoundersMessage = () => {
               <div className="flex items-center justify-center mb-3">
                 <Signature className="w-6 h-6 text-primary mr-3" />
                 <h3 className="text-2xl font-semibold text-primary bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                  Bilal Jilani
+                  Hazrat Usman
                 </h3>
               </div>
-              <p className="text-gray-600 mb-6">Founder & President, Pixi Creative</p>
+              <p className="text-gray-600 mb-6">Founder & CEO, ByteSynq Solution</p>
               
               {/* Enhanced values indicators */}
               <div className="flex justify-center gap-6 mt-8">
@@ -104,7 +104,7 @@ const FoundersMessage = () => {
                 <div className="relative z-10">
                   <p className="text-lg text-gray-700 leading-relaxed mb-8 relative pl-6 border-l-2 border-primary/30">
                     <span className="absolute -left-1 text-primary text-2xl">"</span>
-                    When I started Pixi Creative, the idea was simple: to help organizations present themselves with clarity and confidence. I believed then, as I do now, that every business, NGO, and initiative has a unique story — and that story deserves to be told in a way that inspires trust and drives impact.
+                    When I started ByteSynq, the idea was simple: to help organizations present themselves with clarity and confidence. I believed then, as I do now, that every business, NGO, and initiative has a unique story — and that story deserves to be told in a way that inspires trust and drives impact.
                   </p>
                   
                   <p className="text-lg text-gray-700 leading-relaxed mb-8">
@@ -112,7 +112,7 @@ const FoundersMessage = () => {
                   </p>
                   
                   <p className="text-lg text-gray-700 leading-relaxed">
-                    Today, Pixi Creative is more than a service provider. We are a partner — listening, understanding, and working side by side with our clients to turn ideas into results.
+                    Today, ByteSynq is more than a service provider. We are a partner — listening, understanding, and working side by side with our clients to turn ideas into results.
                   </p>
                 </div>
 

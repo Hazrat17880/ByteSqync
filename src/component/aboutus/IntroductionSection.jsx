@@ -118,6 +118,10 @@ const IntroductionSection = () => {
     };
   }, []);
 
+  const primaryColor = "#0A66C2"; // or your brand's main color
+const secondaryColor = "#00BFA6"; // your accent/secondary color
+
+
   // Animation variants
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -184,7 +188,7 @@ const IntroductionSection = () => {
 ];
 
   return (
-    <section className='relative bg-gray-100 md:py-5 md:pt-20 md:min-h-screen flex justify-center items-center py-20'>
+    <section className='relative bg-gray-100 md:py-5 md:pt-12  md:min-h-screen flex justify-center items-center py-12'>
       {/* Animated canvas background */}
       <canvas 
         ref={canvasRef} 
@@ -244,28 +248,142 @@ const IntroductionSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 } }
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-16"
+          className="mt-5"
         >
           {/* PIXI Services Grid */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-center text-[#1f4668] mb-8" style={{ fontFamily: 'virtual, sans-serif' }}>Our PIXI Services</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {pixiServices.map((service, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1 + 0.5 }}
-                  className="flex flex-col items-center p-4 rounded-lg bg-primary border border-gray-100 hover:shadow-md transition-all duration-300"
-                >
-                  <div className={`p-3 rounded-full bg-${service.color}-100 text-white mb-3`}>
-                    {service.icon}
-                  </div>
-                  <span className="text-sm font-medium text-gray-700 text-center text-white">{service.name}</span>
-                </motion.div>
-              ))}
-            </div>
+         <div className="mb-20 py-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl border border-gray-200">
+  {/* Header */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6 }}
+    className="text-center mb-16"
+  >
+    
+
+    <h3 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+      <span style={{ color: primaryColor }}>ByteSynq</span>{" "}
+      <span style={{ color: secondaryColor }}>Services</span>
+    </h3>
+    
+    <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+      End-to-end digital solutions designed to transform your business through innovative technology.
+    </p>
+  </motion.div>
+
+  {/* Services Grid */}
+  <div className="max-w-6xl mx-auto px-6">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      {pixiServices.map((service, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: i * 0.1 }}
+          whileHover={{ 
+            scale: 1.05, 
+            y: -5,
+            transition: { duration: 0.3 }
+          }}
+          className="group relative"
+        >
+          {/* Card */}
+          <div 
+            className="flex flex-col items-center p-6 rounded-2xl bg-white border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-lg transition-all duration-500 cursor-pointer h-full relative overflow-hidden"
+          >
+            {/* Hover Background Effect */}
+            <div 
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
+              style={{ 
+                background: `linear-gradient(135deg, ${primaryColor}08, ${secondaryColor}08)` 
+              }}
+            />
+            
+            {/* Icon Container */}
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ duration: 0.3 }}
+              className="relative z-10 w-14 h-14 rounded-2xl flex items-center justify-center mb-4 shadow-sm group-hover:shadow-md transition-all duration-300"
+              style={{ 
+                background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})` 
+              }}
+            >
+              <div className="text-white text-lg">
+                {service.icon}
+              </div>
+            </motion.div>
+            
+            {/* Service Name */}
+            <span className="relative z-10 text-xs font-bold text-gray-800 text-center leading-tight group-hover:text-gray-900 transition-colors duration-300 uppercase tracking-wide">
+              {service.name}
+            </span>
+            
+            {/* Hover Effect Line */}
+            <div 
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 group-hover:w-3/4 transition-all duration-500 rounded-full"
+              style={{ backgroundColor: primaryColor }}
+            />
           </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  {/* Stats Bar */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 0.8 }}
+    className="max-w-4xl mx-auto mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 px-6"
+  >
+    {[
+      { number: "50+", label: "Projects" },
+      { number: "25+", label: "Clients" },
+      { number: "15+", label: "Technologies" },
+      { number: "98%", label: "Satisfaction" }
+    ].map((stat, index) => (
+      <motion.div 
+        key={index}
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+        className="text-center"
+      >
+        <div 
+          className="text-2xl md:text-3xl font-bold mb-2"
+          style={{ color: primaryColor }}
+        >
+          {stat.number}
+        </div>
+        <div className="text-sm text-gray-600 font-medium">{stat.label}</div>
+      </motion.div>
+    ))}
+  </motion.div>
+
+  {/* CTA Section */}
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, delay: 1.2 }}
+    className="text-center mt-16"
+  >
+    <motion.button
+      whileHover={{ scale: 1.05, y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      className="px-8 py-4 text-white font-semibold rounded-2xl hover:shadow-lg transition-all duration-300 flex items-center gap-3 mx-auto"
+      style={{ 
+        background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})` 
+      }}
+    >
+      <span>Start Your Project</span>
+      <ArrowRight className="w-5 h-5" />
+    </motion.button>
+  </motion.div>
+</div>
           
           {/* Values Cards */}
           <div className="grid md:grid-cols-3 gap-8 mt-16">

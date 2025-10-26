@@ -72,8 +72,8 @@ export default function Navbar() {
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
-          ? "shadow-lg backdrop-blur-lg bg-white/95"
-          : "bg-white shadow-sm"
+          ? "shadow-lg backdrop-blur-lg bg-gradient-to-r from-[#0A2463] to-[#065F46]/95"
+          : "bg-gradient-to-r from-[#0A2463] to-[#065F46] shadow-sm"
       } ${
         isVisible 
           ? "translate-y-0 opacity-100" 
@@ -89,12 +89,11 @@ export default function Navbar() {
               className="flex flex-col items-center transition-transform duration-300 hover:scale-105"
             >
               <span 
-                className="text-3xl font-bold"
-                style={{ color: primaryColor }}
+                className="text-3xl font-bold text-white"
               >
                 ByteSynq
               </span>
-              <span className="text-xs mt-1 font-medium" style={{ color: secondaryColor }}>
+              <span className="text-xs mt-1 font-medium text-gray-200">
                 Software Solutions
               </span>
             </a>
@@ -106,12 +105,12 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="font-medium transition-all duration-300 relative group hover:scale-105 text-[#2D46B9] hover:text-[#00C6FF]"
+                className="font-medium transition-all duration-300 relative group hover:scale-105 text-white hover:text-gray-200"
               >
                 {item.name}
                 <span 
                   className="absolute -bottom-1 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full group-hover:shadow-sm"
-                  style={{ backgroundColor: primaryColor }}
+                  style={{ backgroundColor: secondaryColor }}
                 ></span>
               </a>
             ))}
@@ -125,7 +124,7 @@ export default function Navbar() {
                 isMobileMenuOpen ? "rotate-90" : "rotate-0"
               }`}
               aria-label="Toggle menu"
-              style={{ color: primaryColor }}
+              style={{ color: 'white' }}
             >
               {isMobileMenuOpen ? (
                 <X size={28} className="transition-transform duration-300" />
@@ -145,15 +144,15 @@ export default function Navbar() {
           }`}
         >
           <div 
-            className="border-t rounded-b-xl shadow-lg bg-white"
-            style={{ borderColor: "#E5E7EB" }}
+            className="border-t rounded-b-xl shadow-lg bg-gradient-to-b from-[#0A2463] to-[#065F46]"
+            style={{ borderColor: "#1E40AF" }}
           >
             <div className="px-2 pt-2 pb-4 space-y-1">
               {navItems.map((item, index) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-4 py-4 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                  className="block px-4 py-4 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 text-white hover:text-gray-200 hover:bg-white/10"
                   onClick={handleMobileMenuClose}
                   style={{
                     transitionDelay: isMobileMenuOpen ? `${index * 50}ms` : "0ms",
@@ -170,7 +169,7 @@ export default function Navbar() {
       {/* Backdrop for Mobile Menu */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/10 z-40 md:hidden transition-opacity duration-300"
+          className="fixed inset-0 bg-black/30 z-40 md:hidden transition-opacity duration-300"
           onClick={handleMobileMenuClose}
         />
       )}

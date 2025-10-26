@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 
 const Footer = () => {
+  const primaryColor = "#0A66C2";
+  const secondaryColor = "#00BFA6";
   const currentYear = new Date().getFullYear();
 
   const scrollToTop = () => {
@@ -73,7 +75,10 @@ const Footer = () => {
               className="lg:col-span-2"
             >
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3">
+                <div 
+                  className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg mr-3"
+                  style={{ background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})` }}
+                >
                   BS
                 </div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
@@ -94,7 +99,16 @@ const Footer = () => {
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white hover:bg-secondary transition-all duration-300 backdrop-blur-sm"
+                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center text-white transition-all duration-300 backdrop-blur-sm"
+                    style={{
+                      backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = secondaryColor;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                    }}
                     aria-label={social.label}
                   >
                     <social.icon className="w-4 h-4" />
@@ -122,9 +136,30 @@ const Footer = () => {
                   >
                     <a
                       href={link.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
+                      className="text-gray-300 transition-colors duration-300 flex items-center group"
+                      style={{
+                        color: 'rgb(209, 213, 219)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = secondaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgb(209, 213, 219)';
+                      }}
                     >
-                      <span className="w-1 h-1 bg-secondary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span 
+                        className="w-1 h-1 rounded-full mr-3 transition-opacity duration-300"
+                        style={{ 
+                          backgroundColor: secondaryColor,
+                          opacity: 0
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.opacity = '1';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.opacity = '0';
+                        }}
+                      />
                       {link.name}
                     </a>
                   </motion.li>
@@ -151,9 +186,30 @@ const Footer = () => {
                   >
                     <a
                       href={service.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-300 flex items-center group"
+                      className="text-gray-300 transition-colors duration-300 flex items-center group"
+                      style={{
+                        color: 'rgb(209, 213, 219)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = secondaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'rgb(209, 213, 219)';
+                      }}
                     >
-                      <span className="w-1 h-1 bg-secondary rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span 
+                        className="w-1 h-1 rounded-full mr-3 transition-opacity duration-300"
+                        style={{ 
+                          backgroundColor: secondaryColor,
+                          opacity: 0
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.opacity = '1';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.opacity = '0';
+                        }}
+                      />
                       {service.name}
                     </a>
                   </motion.li>
@@ -177,10 +233,23 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <Mail className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
+                  <Mail 
+                    className="w-5 h-5 mt-0.5 flex-shrink-0" 
+                    style={{ color: secondaryColor }}
+                  />
                   <div>
                     <p className="text-gray-300 text-sm">Email</p>
-                    <a href="mailto:info@bytesynq.com" className="text-white hover:text-secondary transition-colors duration-300">
+                    <a 
+                      href="mailto:info@bytesynq.com" 
+                      className="transition-colors duration-300"
+                      style={{ color: 'white' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = secondaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'white';
+                      }}
+                    >
                       info@bytesynq.com
                     </a>
                   </div>
@@ -193,10 +262,23 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <Phone className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
+                  <Phone 
+                    className="w-5 h-5 mt-0.5 flex-shrink-0" 
+                    style={{ color: secondaryColor }}
+                  />
                   <div>
                     <p className="text-gray-300 text-sm">Phone</p>
-                    <a href="tel:+93705155015" className="text-white hover:text-secondary transition-colors duration-300">
+                    <a 
+                      href="tel:+93705155015" 
+                      className="transition-colors duration-300"
+                      style={{ color: 'white' }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.color = secondaryColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.color = 'white';
+                      }}
+                    >
                       +93 705 155 015
                     </a>
                   </div>
@@ -209,7 +291,10 @@ const Footer = () => {
                   viewport={{ once: true }}
                   className="flex items-start space-x-3"
                 >
-                  <MapPin className="w-5 h-5 text-secondary mt-0.5 flex-shrink-0" />
+                  <MapPin 
+                    className="w-5 h-5 mt-0.5 flex-shrink-0" 
+                    style={{ color: secondaryColor }}
+                  />
                   <div>
                     <p className="text-gray-300 text-sm">Location</p>
                     <p className="text-white text-sm">Islamabad & San Francisco</p>
@@ -241,13 +326,43 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="flex items-center space-x-6 text-sm"
               >
-                <a href="/privacy" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a 
+                  href="/privacy" 
+                  className="transition-colors duration-300"
+                  style={{ color: 'rgb(156, 163, 175)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = secondaryColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgb(156, 163, 175)';
+                  }}
+                >
                   Privacy Policy
                 </a>
-                <a href="/terms" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a 
+                  href="/terms" 
+                  className="transition-colors duration-300"
+                  style={{ color: 'rgb(156, 163, 175)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = secondaryColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgb(156, 163, 175)';
+                  }}
+                >
                   Terms of Service
                 </a>
-                <a href="/cookies" className="text-gray-400 hover:text-white transition-colors duration-300">
+                <a 
+                  href="/cookies" 
+                  className="transition-colors duration-300"
+                  style={{ color: 'rgb(156, 163, 175)' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = secondaryColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = 'rgb(156, 163, 175)';
+                  }}
+                >
                   Cookie Policy
                 </a>
               </motion.div>
@@ -263,7 +378,10 @@ const Footer = () => {
         transition={{ duration: 0.4, delay: 0.6 }}
         viewport={{ once: true }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 group"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 z-50 group"
+        style={{
+          background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
+        }}
         aria-label="Scroll to top"
         whileHover={{ scale: 1.1, y: -2 }}
       >

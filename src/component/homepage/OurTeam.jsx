@@ -79,7 +79,7 @@ export default function OurTeam() {
           transition={{ duration: 0.7 }}
         >
           <h2 className="text-2xl md:text-3xl lg:text-5xl text-[#1f4668] tracking-wide lowercase mb-4" style={{ fontFamily: 'virtual, sans-serif' }}>
-            Meet Our <span className="text-[#27AAE1]">Dream Team</span>
+            Meet Our <span className="text-[#27AAE1]">Team</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'poppin, sans-serif' }}>
             Talented professionals dedicated to bringing your vision to life with creativity and technical excellence.

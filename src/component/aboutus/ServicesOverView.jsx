@@ -12,7 +12,7 @@ const ServicesOverviewSection = () => {
   const services = {
     creative: {
       icon: Palette,
-      title: "Pixi Creative Services",
+      title: "ByteSqync Creative Services",
       color: "from-blue-500 to-cyan-500",
       bgColor: "bg-gradient-to-r from-blue-500 to-cyan-500",
       items: [
@@ -45,7 +45,7 @@ const ServicesOverviewSection = () => {
     },
     consulting: {
       icon: Briefcase,
-      title: "Pixi Business Consulting",
+      title: "ByteSqynq Business Consulting",
       color: "from-purple-500 to-pink-500",
       bgColor: "bg-gradient-to-r from-purple-500 to-pink-500",
       items: [
@@ -73,7 +73,7 @@ const ServicesOverviewSection = () => {
     },
     academic: {
       icon: BookOpen,
-      title: "Pixi Academy",
+      title: "ByteSynq Academy",
       color: "from-amber-500 to-orange-500",
       bgColor: "bg-gradient-to-r from-amber-500 to-orange-500",
       description: "Nurturing the next generation of digital creators with hands-on, project-based training.",

@@ -251,7 +251,7 @@ const USPSection = () => {
           </motion.h2>
            
           <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover what sets us apart and makes PIXI the perfect partner for your creative journey
+            Discover what sets us apart and makes BYTESYNQ the perfect partner for your creative journey
           </motion.p>
         </motion.div>
 
